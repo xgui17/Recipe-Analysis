@@ -19,13 +19,15 @@ Here are a few things we've done to clean up the data:
 - Replace the entries in `calories (#)` with more than 2000 calories with np.nan since there is hardly any recipe in life with such high calories. 
 - Replace the data in `minutes` that are greater than 24*60 with np.nan, because it is unreasonable to prepare a recipe for over a day. 
 
-Here are the first few rows of the data frame `cleaned`. We’ll refer to the data inside `cleaned` from now on. 
+Due to limited space, here are the first few rows of the data frame `cleaned` with the columns that we are about to use a lot. We’ll refer to the data inside `cleaned` from now on. 
 
 |id|minutes|n_steps|n_ingredients|rating|year|calories (#)|total fat (PDV)|
 |---|---|---|---|---|---|---|---|
 |333281|40.0|10|9|4.0|2008|138.4|0.10|
 |453467|45.0|12|11|5.0|2011|595.1|0.46|
 |306168|40.0|6|9|5.0|2008|194.8|0.20|
+|286009|120.0|7|7|5.0|2008|878.3|0.63|
+|475785|90.0|17|13|5.0|2012|267.0|0.30|	
 
 
 ### Univariate Analysis 
