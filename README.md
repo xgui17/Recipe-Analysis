@@ -21,11 +21,11 @@ Here are a few things we've done to clean up the data:
 
 Here are the first few rows of the data frame `cleaned`. We’ll refer to the data inside `cleaned` from now on. 
 
-|name|id|minutes|contributor_id|submitted|tags|n_steps|steps|description|ingredients|n_ingredients|rating|year|calories (#)|total fat (PDV)|sugar (PDV)|sodium (PDV)|protein (PDV)|saturated fat (PDV)|carbohydrates (PDV)|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1 brownies in the world best ever|333281|40.0|985201|2008-10-27|[60-minutes-or-less, time-to-make, course, mai...|10|[heat the oven to 350f and arrange the rack in...|these are the most; chocolatey, moist, rich, d...|[bittersweet chocolate, unsalted butter, eggs,...|9|4.0|2008|138.4|0.10|0.50|0.03|0.03|0.19|0.06|
-|1 in canada chocolate chip cookies|453467|45.0|1848091|2011-04-11|[60-minutes-or-less, time-to-make, cuisine, pr...|12|[pre-heat oven the 350 degrees f, in a mixing ...|this is the recipe that we use at my school ca...|[white sugar, brown sugar, salt, margarine, eg...|11|5.0|2011|595.1|0.46|2.11|0.22|0.13|0.51|0.26|
-|412 broccoli casserole|306168|40.0|50969|2008-05-30|[60-minutes-or-less, time-to-make, course, mai...|6|[preheat oven to 350 degrees, spray a 2 quart ...|since there are already 411 recipes for brocco...|[frozen broccoli cuts, cream of chicken soup, ...|9|5.0|2008|194.8|0.20|0.06|0.32|0.22|0.36|0.03|
+|id|minutes|n_steps|n_ingredients|rating|year|calories (#)|total fat (PDV)|
+|---|---|---|---|---|---|---|---|
+|333281|40.0|10|9|4.0|2008|138.4|0.10|
+|453467|45.0|12|11|5.0|2011|595.1|0.46|
+|306168|40.0|6|9|5.0|2008|194.8|0.20|
 
 
 ### Univariate Analysis 
