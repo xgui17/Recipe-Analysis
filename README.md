@@ -32,28 +32,28 @@ Here are the first few rows of the data frame `cleaned`. We’ll refer to the da
 #### Histogram of Number of Tags (`n_tags`)
 We plot the distribution of the number of tags using histogram. As you can see from the figure, the recipes with 10-19 tags are the most.
 
-<iframe src="assets/n_tag_hist.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/n_tag_hist.html" width=550 height=400 frameBorder=0></iframe>
 
 #### Histogram of Number of steps ( `n_steps`)
 We plot the distribution of n_steps using histogram. As you can see from the figure, most recipes take between 0 and 20 steps to make.
 
-<iframe src="assets/Hist_n_step.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/Hist_n_step.html" width=550 height=400 frameBorder=0></iframe>
 
 ### Bivariate Analysis 
 #### Possible correlation between `n_steps` and `minutes` 
 By common sense, we know that more steps usually take up more time. In order to explore the accuracy of this statement, we plot a scatter plot and the OLS linear regression line. This image confirms our guess.
 
-<iframe src="assets/Scat_step_minute.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/Scat_step_minute.html" width=550 height=400 frameBorder=0></iframe>
 
 #### Possible correlation between `calories (#)` and `total fat (PDV)`
 In order to explore if more calories is associated with more total fat, we plot a scatter plot and the OLS linear regression line. As is shown in the graph, calories and total fat are positively correlated.
 
-<iframe src="assets/Scat_cal_fat.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/Scat_cal_fat.html" width=550 height=400 frameBorder=0></iframe>
 
 #### Histogram of number of `rating` of 5 in each year
 We've plotted a histogram of the number of ratings of 5 for each year. From the figure, we can see that the rating of 5 in 2008 is the highest. Though the trend of the plot seems decreasing over years, we cannot conclude that people are giving fewer and fewer fives to the recipe, since the number of total recipes varies in each year. More investigation of the proportion of recipes that got 5 each year is needed for an accurate conclusion.
 
-<iframe src="assets/Scat_year_rating.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/Scat_year_rating.html" width=550 height=400 frameBorder=0></iframe>
 
 ### Interesting Aggregates
 We want to know whether the distribution of `rating` is similar for each `calories (#)` group. Therefore, we created a pivot table with rating group as index, and calories group as columns. This table displays the proportions of each average rating group for each calory group. 
@@ -82,7 +82,7 @@ We are interested in if the data in `rating` is **MAR** dependent on the number 
 
 By plotting the distributions of the number of ingredients in the group in which `rating` is and is not missing, we find that the mean and median of the two distributions are roughly the same. Therefore, instead of using differences in means or medians, we decide to use **K-S statistic** (The Kolmogorov–Smirnov statistic) as our test statistic. 
 
-<iframe src="assets/KDE_ing_rating.html" width=520 height=390 frameBorder=0></iframe>
+<iframe src="assets/KDE_ing_rating.html" width=550 height=400 frameBorder=0></iframe>
 
 The p-value is larger than 0.05, so we fail to reject the null hypothesis and conclude that the missingness of rating seems to be independent on the distribution of numbers of ingredients of each recipe to some extent, which means `rating` is not MAR dependent on `num_ing`.
 
