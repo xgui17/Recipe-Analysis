@@ -1,12 +1,16 @@
 # Exploration of Recipes on [Food.com](https://www.food.com/) 🍱
 
+<p></p>
+
 ## PART I: Introduction and Question Identification
-Our dataset generally includes recipe information from Food.com (https://www.food.com/), food descriptions and user feedback. The particular information we're going to focus on is the ratings of recipes. To be specific, the question that we are about to explore is:
+Our dataset generally includes recipe information, food descriptions and user feedback from [Food.com](https://www.food.com/). The particular information we're going to focus on is the ratings of recipes. To be specific, the question that we are about to explore is:
 - Is the distribution of recipe submission years that get a score of 5 randomly selected from the distribution of all recipe submission years? 
 
 We asked this question because we wanted to see if food.com users' ideas of a good recipe change from year to year, and we’ve chosen the 5-star rating group because the users who rated five must be satisfied enough with the recipe to give it the highest rating. 
 
 To answer our question, we need to extract information from the `submitted` and `rating` in the dataset. `submitted` is the time when the user uploads the recipe. `rating` represents the average rating of the recipe. We are going to use all the rows in the dataset.
+
+<p></p>
 
 ## PART II: Data Cleaning
 We first calculated the average `rating` of each recipe, and combined them with other information about the recipes. Then we replaced all the `rating` of 0 with np.nan. Such replacement is reasonable due to the fact that there is no rating of 0 on the website, and the 0s in the `rating` column is actually representing missing data.
@@ -29,33 +33,44 @@ Due to limited space, here are the first few rows of the data frame `cleaned` wi
 |286009|120.0|7|7|5.0|2008|878.3|0.63|
 |475785|90.0|17|13|5.0|2012|267.0|0.30|	
 
+<p></p>
 
 ### Univariate Analysis 
 #### Histogram of Number of Tags (`n_tags`)
 We plot the distribution of the number of tags using histogram. As you can see from the figure, the recipes with 10-19 tags are the most.
 
-<iframe src="assets/n_tag_hist.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/n_tag_hist.html" width=570 height=400 frameBorder=0></iframe>
+
+<p></p>
 
 #### Histogram of Number of steps ( `n_steps`)
 We plot the distribution of n_steps using histogram. As you can see from the figure, most recipes take between 0 and 20 steps to make.
 
-<iframe src="assets/Hist_n_step.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/Hist_n_step.html" width=570 height=400 frameBorder=0></iframe>
+
+<p></p>
 
 ### Bivariate Analysis 
 #### Possible correlation between `n_steps` and `minutes` 
 By common sense, we know that more steps usually take up more time. In order to explore the accuracy of this statement, we plot a scatter plot and the OLS linear regression line. This image confirms our guess.
 
-<iframe src="assets/Scat_step_minute.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/Scat_step_minute.html" width=570 height=400 frameBorder=0></iframe>
+
+<p></p>
 
 #### Possible correlation between `calories (#)` and `total fat (PDV)`
 In order to explore if more calories is associated with more total fat, we plot a scatter plot and the OLS linear regression line. As is shown in the graph, calories and total fat are positively correlated.
 
-<iframe src="assets/Scat_cal_fat.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/Scat_cal_fat.html" width=570 height=400 frameBorder=0></iframe>
+
+<p></p>
 
 #### Histogram of number of `rating` of 5 in each year
 We've plotted a histogram of the number of ratings of 5 for each year. From the figure, we can see that the rating of 5 in 2008 is the highest. Though the trend of the plot seems decreasing over years, we cannot conclude that people are giving fewer and fewer fives to the recipe, since the number of total recipes varies in each year. More investigation of the proportion of recipes that got 5 each year is needed for an accurate conclusion.
 
-<iframe src="assets/Scat_year_rating.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/Scat_year_rating.html" width=570 height=400 frameBorder=0></iframe>
+
+<p></p>
 
 ### Interesting Aggregates
 We want to know whether the distribution of `rating` is similar for each `calories (#)` group. Therefore, we created a pivot table with rating group as index, and calories group as columns. This table displays the proportions of each average rating group for each calory group. 
@@ -68,6 +83,7 @@ We want to know whether the distribution of `rating` is similar for each `calori
 | (3, 4]        |        0.18188    |       0.189064   |       0.195451   |        0.196968   |
 | (4, 5]        |        0.742134   |       0.733609   |       0.726941   |        0.719949   |
 
+<p></p>
 
 ## PART III: Assessment of Missingness 
 After cleaning the data and analyzing the distribution of data by making univariate and bivariate plots, we have a vague idea of what kind of data we have in our `cleaned` data frame. Now, it’s time to dive deeper into analyzing the missingness of data in particular columns of our data frame.
@@ -84,10 +100,11 @@ We are interested in if the data in `rating` is **MAR** dependent on the number 
 
 By plotting the distributions of the number of ingredients in the group in which `rating` is and is not missing, we find that the mean and median of the two distributions are roughly the same. Therefore, instead of using differences in means or medians, we decide to use **K-S statistic** (The Kolmogorov–Smirnov statistic) as our test statistic. 
 
-<iframe src="assets/KDE_ing_rating.html" width=550 height=400 frameBorder=0></iframe>
+<iframe src="assets/KDE_ing_rating.html" width=570 height=400 frameBorder=0></iframe>
 
 The p-value is larger than 0.05, so we fail to reject the null hypothesis and conclude that the missingness of rating seems to be independent on the distribution of numbers of ingredients of each recipe to some extent, which means `rating` is not MAR dependent on `num_ing`.
 
+<p></p>
 
 ## PART IV: Hypothesis Testing
 Aside from analyzing the missing mechanism, we still have another question that was proposed at the top of this page – is the distribution of submitted years of recipes that got a rating of 5 randomly drawn from the distribution of submitted years of all recipes? To answer this question, we need to conduct a hypothesis test. Below are our null and alternative hypotheses. 
